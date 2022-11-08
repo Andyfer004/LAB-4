@@ -10,6 +10,7 @@ String genero;
     System.out.println("El autor es "+autor);
     System.out.println("el genero es "+genero);
  }
+ 
  public cancion(String nombre_ingresado,String duracion_ingresado,String autor_ingresado,String genero_ingresado){
     this.nombre = nombre_ingresado;
     this.duracion = duracion_ingresado;
