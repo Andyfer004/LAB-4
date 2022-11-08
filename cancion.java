@@ -3,6 +3,7 @@ String nombre;
 String duracion;
 String autor;
 String genero;
+ 
  public void mostrar(){
     System.out.println("El nombre es "+nombre);
     System.out.println("la duracion es "+duracion);
