@@ -4,14 +4,15 @@
  * @author Andy Fuentes
  * @author David Trujillo
  * @date 8- 11 - 2022
- * Interfaz para el modo radio
+ * Interfaz para el modo teléfono 
  */
 
-public interface modo_radio {
+public interface telefono {
     
-    public boolean cambiar();
-    public boolean cambiar_e();
-    public ArrayList<Float> guardar();
-    public int cargar();
+    public boolean conexion();
+    public String contactos();
+    public String llamar_c();
+    public String finalizar();
+    public boolean audio();
 
 }
