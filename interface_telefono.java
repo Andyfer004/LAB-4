@@ -4,14 +4,15 @@
  * @author Andy Fuentes
  * @author David Trujillo
  * @date 8- 11 - 2022
- * Interfaz para la preproducción de música
+ * Interfaz para el modo teléfono 
  */
 
-
-public interface reproduccion {
+public interface telefono {
     
-    public void seleccionar();
-    public boolean cambiar_c();
-    public String escuchar();
-   
+    public boolean conexion();
+    public String contactos();
+    public String llamar_c();
+    public String finalizar();
+    public boolean audio();
+
 }
