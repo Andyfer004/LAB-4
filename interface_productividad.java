@@ -9,7 +9,5 @@
 
 public interface productividad {
     
-    public String viajar(String lugar){    
-        return "Su destino es " + lugar + ", el viaje sera de " + (int)(Math.random() * (35-1) + 1) + "km y tomara " + (int)(Math.random() * (200-20) + 20) + " minutos";
-    }
+    public String planificar_viajes();
 }
