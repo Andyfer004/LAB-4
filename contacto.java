@@ -61,9 +61,8 @@ public class contacto {
     @Override
     public String toString() {
         return "{" +
-            " nombre='" + getNombre() + "'" +
-            ", numero='" + getNumero() + "'" +
-            "}";
+            " Nombre='" + getNombre() + "\n" +
+            " Numero='" + getNumero() + "\n" ;
     }
     
 }
