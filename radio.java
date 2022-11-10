@@ -10,7 +10,6 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     private int posicion;
     private boolean conectar;
     private String audio;
-    private ArrayList<Double> listaEmisoras;
     private ArrayList<contacto> contactos;
 
 
@@ -23,7 +22,6 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         posicion = 1;
         conectar = false;
         audio = "Speaker";
-        listaEmisoras = new ArrayList<Double>();
         contactos = new ArrayList<contacto>();
         contactos.add(new contacto("Sharis", "12345678"));
         contactos.add(new contacto("Luis", "23145678"));
@@ -109,7 +107,8 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         System.out.println("Ingrese la emisora que desee");
                 Double emisora_deseada = scan.nextDouble();
                 scan.nextLine();
-                emisora = emisora_deseada;
+                System.out.println("Esta escuchando la emisora" + emisora_deseada + " en la emosira radial" + tipoEmisora);
+
     }
 
 
@@ -202,7 +201,5 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         }
         System.out.println("El sonido está en modo "+audio);  
     }
-
-
 
 }
