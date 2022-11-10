@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class radio implements modo_radio, modo_estado, modo_productividad, modo_reproduccion, modo_telefono, modo_volumen {
-    Scanner scan = new Scanner(System.in);
     private Double emisora;
     private String tipoEmisora;
     private String mood;
@@ -15,7 +14,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     private ArrayList<contacto> contactos;
 
 
-
+    Scanner scan = new Scanner(System.in);
     public radio() {
         emisora = 87.5;
         tipoEmisora = "FM";
@@ -26,6 +25,9 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         audio = "Speaker";
         listaEmisoras = new ArrayList<Double>();
         contactos = new ArrayList<contacto>();
+        contactos.add(new contacto("Sharis", "12345678"));
+        contactos.add(new contacto("Luis", "23145678"));
+        contactos.add(new contacto("Pablo", "34567812"));
     }
 
 
@@ -40,6 +42,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         else if(itson == true){
             mood = "Encendido";
         }
+        System.out.println("La radio está  " + mood); 
     }
 
     /*
