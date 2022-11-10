@@ -8,8 +8,8 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     private String tipoEmisora;
     private String mood;
     private int volumen;
-    private boolean itson;
     private int posicion;
+    private boolean conectar;
     private ArrayList<Double> listaEmisoras;
     private ArrayList<contacto> contactos;
 
@@ -20,8 +20,8 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         tipoEmisora = "FM";
         mood = "Apagado";
         volumen = 5;
-        itson = false;
         posicion = 1;
+        conectar = false;
         listaEmisoras = new ArrayList<Double>();
         contactos = new ArrayList<contacto>();
     }
@@ -143,16 +143,43 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
      * Modo telefono
      */
 
-    public void conexion(boolean conection){
+    public void conexion(boolean conexion){
+        String mensaje="";
+        if (conexion == true)
+        {
+            mensaje="El telefono esta conectado";
+        }
+        else
+        {
+            mensaje="El telefono esta desconectado";
+        }
+        conectar = conexion;
+        System.out.println(mensaje);
 
     }
 
-    public void contactos(ArrayList<contacto> lista){
+
+    public void contactos(ArrayList<contacto> contactos){
+        int orden =1;
+        for (contacto i: contactos) {
+            System.out.println("-"+orden+". "+i.toString());
+          }
 
     }
+
+
     public void llamar(ArrayList<contacto> lista){
+        int x=1;
+        for (contacto i: lista) {
+            System.out.println("-"+x+". "+i.get_nombre() +", telefono: "+i.get_telefono());
+            x=x+1;
+        }
+        System.out.println("Escoja un contacto a llamar");
+        int o = reclado.nextInt()-1;
+        System.out.println("llamando a "+lista.get(o).get_nombre()+ " del numero "+ lista.get(o).get_telefono());
 
     }
+    
     public void finalizar(){
 
     }
