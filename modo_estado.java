@@ -10,6 +10,6 @@
 
 public interface modo_estado {
 
-    public void estado(Boolean estado);;
+    public void estado(Boolean estado);
     
 }

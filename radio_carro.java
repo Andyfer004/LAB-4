@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 
-public class radio_carro implements radio {
+public class radio_carro implements modo_radio, modo_estado, modo_productividad, modo_reproduccion, modo_telefono, modo_volumen {
         Scanner scan = new Scanner(System.in);
         private float emisora;
         private String mood;
