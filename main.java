@@ -6,6 +6,7 @@ public class main {
         int opcion = 0; 
         radio rc = new radio();
         boolean valor = false;
+        ArrayList<Double> listaEmisoras = new ArrayList<Double>();
         Scanner scan = new Scanner(System.in);
         String menu ="--Menu de selección-- \n--------------------- \n1. Encender/Apagar \n2. Cambiar volumen \n3. Modo radio \n4. Modo reproduccion \n5. Modo telefono \n6. Modo productividad \nIngrese el numero de la opcion que desea";
         System.out.println(menu);
@@ -70,20 +71,14 @@ public class main {
                 }
 
                 if (eleccion == 3){
-                    System.out.println("¿Deseas cambiar emisora hacia arriba o abajo? 1. Arriba 2. Abajo");
-                    int emi = scan.nextInt();
-                    scan.nextLine();
-                    boolean valor3 = false;
-                    if (emi == 1){
-                        valor3 = true;}
-                    else {
-                        valor3 = false;}
-                    rc.cambiar_e(valor3);
+                    System.out.println("¿Qué emisora deseas guardar? Ingresala ");
+                    double emisora = scan.nextDouble();
+                    rc.guardar(listaEmisoras, emisora);
                 }
 
-                
-
-
+                if (eleccion == 4){
+                    rc.cargar(listaEmisoras);
+                }
 
 
             case 4:
