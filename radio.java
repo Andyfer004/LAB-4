@@ -90,7 +90,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
-    public void guardar(listaEmisoras, Double emisora){
+    public void guardar(ArrayList<Double> listaEmisoras, Double emisora){
         if(listaEmisoras.size() <= 50 ){
             listaEmisoras.add(emisora);
         }
@@ -100,7 +100,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
-    public void cargar(listaEmisoras){
+    public void cargar(ArrayList<Double> listaEmisoras){
         System.out.println("Ingrese la emisora que desee");
                 Double emisora_deseada = scan.nextDouble();
                 scan.nextLine();
@@ -159,6 +159,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     public void audio(Boolean flag){
         
     }
+
 
 
 }
