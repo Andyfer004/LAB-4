@@ -7,7 +7,7 @@
  * Interfaz para productividad (planificación de viajes)
  */
 
-public interface productividad {
+public interface modo_productividad {
     
-    public String planificar_viajes();
+    public String viajes(String viaje);
 }

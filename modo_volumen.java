@@ -8,7 +8,6 @@
 
 public interface modo_volumen {
 
-    
-    public boolean volumen();
+    public void volumen(Boolean flag);
     
 }
