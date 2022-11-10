@@ -10,6 +10,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     private int volumen;
     private int posicion;
     private boolean conectar;
+    private String audio;
     private ArrayList<Double> listaEmisoras;
     private ArrayList<contacto> contactos;
 
@@ -22,6 +23,7 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         volumen = 5;
         posicion = 1;
         conectar = false;
+        audio = "Speaker";
         listaEmisoras = new ArrayList<Double>();
         contactos = new ArrayList<contacto>();
     }
@@ -168,23 +170,34 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
-    public void llamar(ArrayList<contacto> lista){
-        int x=1;
-        for (contacto i: lista) {
-            System.out.println("-"+x+". "+i.get_nombre() +", telefono: "+i.get_telefono());
-            x=x+1;
+    public void llamar(ArrayList<contacto> contactos){
+        int posicion =1;
+        for (contacto i: contactos) {
+            System.out.println("-"+posicion+". "+i.toString());
+            posicion++;
         }
         System.out.println("Escoja un contacto a llamar");
-        int o = reclado.nextInt()-1;
-        System.out.println("llamando a "+lista.get(o).get_nombre()+ " del numero "+ lista.get(o).get_telefono());
+        int op = scan.nextInt()-1;
+        scan.nextLine();
+        System.out.println("llamando a "+contactos.get(op).getNombre()+ " del numero "+ contactos.get(op).getNumero());
 
     }
     
     public void finalizar(){
-
+        System.out.println("La llamada se finalizó");
     }
+
+
     public void audio(Boolean flag){
-        
+        if (flag == true)
+        {
+            audio ="Auriculares";
+        }
+        else
+        {
+            audio =" Speaker";
+        }
+        System.out.println("El sonido está en modo "+audio);  
     }
 
 
