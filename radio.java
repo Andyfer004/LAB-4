@@ -4,15 +4,28 @@ import java.util.Random;
 
 public class radio implements modo_radio, modo_estado, modo_productividad, modo_reproduccion, modo_telefono, modo_volumen {
     Scanner scan = new Scanner(System.in);
-    private double emisora;
+    private Double emisora;
     private String tipoEmisora;
     private String mood;
     private int volumen;
     private boolean itson;
-    private String estado;
-    private ArrayList<Float> listaEmisoras;
-    private ArrayList<cancion> canciones;
+    private int posicion;
+    private ArrayList<Double> listaEmisoras;
     private ArrayList<contacto> contactos;
+
+
+
+    public radio() {
+        emisora = 87.5;
+        tipoEmisora = "FM";
+        mood = "Apagado";
+        volumen = 5;
+        itson = false;
+        posicion = 1;
+        listaEmisoras = new ArrayList<Double>();
+        contactos = new ArrayList<contacto>();
+    }
+
 
     /*
      * Modo estado
@@ -20,10 +33,10 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
 
     public void estado(Boolean itson){
         if(itson == false){
-            estado = "Apagado";
+            mood = "Apagado";
         }
         else if(itson == true){
-            estado = "Encendido";
+            mood = "Encendido";
         }
     }
 
@@ -77,48 +90,75 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
-    public void guardar(ArrayList<Double> lista, Double emisora_number);
-    public void cargar(ArrayList<Double> lista);
- 
-    
-        boolean salir = false;
-        while (salir == false){
-            System.out.println("opcion 1: Siguiente emisora\n opcion 2: emisora anterior\n opcion 3: Guardar emisora\n opcion 4: cargar emisora\n 5:salir");
-            int opcion = scan.nextInt();
-            switch(opcion){
-
-                case 1:
-                    emisora = emisora + 0.5;
-                case 2:
-                    emisora = emisora - 0.5;
-                case 3:
-                    if(Lista_emisoras.size() <= 50 ){
-                        Lista_emisoras.add(emisora);
-                    }
-                    else {
-                        System.out.println("Error la lista esta llena");
-                    }
-                case 4:
-                System.out.println("Ingrese la emisora que desee");
-                float emisora_deseada = scan.nextFloat();
-                emisora = emisora_deseada;
-                case 5: 
-                 salir = true;
-            }
+    public void guardar(listaEmisoras, Double emisora){
+        if(listaEmisoras.size() <= 50 ){
+            listaEmisoras.add(emisora);
+        }
+        else {
+            System.out.println("Error la lista esta llena");
         }
     }
 
-    public void modo_reproduccion(){
+
+    public void cargar(listaEmisoras){
+        System.out.println("Ingrese la emisora que desee");
+                Double emisora_deseada = scan.nextDouble();
+                scan.nextLine();
+                emisora = emisora_deseada;
+    }
+
+
+    /*
+     * Modo reproducción
+     */
+    public void seleccionar(ArrayList<cancion> lista){
+        int orden =1;
+        for (cancion i: lista) {
+            System.out.println("-"+orden+". "+i.getNombre() +", artista: "+i.getAutor()+"("+i.getGenero()+")");
+          }
+    }
+
+    public void cambiar_c(Boolean flag,ArrayList<cancion> lista){
+        if (flag==true)
+        {
+            posicion++;
+            if(posicion==lista.size()){
+                posicion=0;}   
+        }
+        else
+        {
+            if (posicion==0){
+                posicion=lista.size()-1;}
+            else{
+                posicion--;}
+        }
 
     }
 
-    public void modo_telefono(){
+    public void escuchar(ArrayList<cancion> lista){
+        System.out.println("Reproduciendo "+lista.get(posicion).mostrar());
+    }
+
+    /*
+     * Modo telefono
+     */
+
+    public void conexion(boolean conection){
 
     }
 
-    
+    public void contactos(ArrayList<contacto> lista){
 
-    public radio(){
-        mood = "FM";
     }
+    public void llamar(ArrayList<contacto> lista){
+
+    }
+    public void finalizar(){
+
+    }
+    public void audio(Boolean flag){
+        
+    }
+
+
 }
