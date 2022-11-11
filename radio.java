@@ -10,39 +10,42 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     private int posicion;
     private boolean conectar;
     private String audio;
-    private ArrayList<contacto> contactos;
 
 
     Scanner scan = new Scanner(System.in);
     public radio() {
-        emisora = 87.5;
+        emisora = 94.5;
         tipoEmisora = "FM";
         mood = "Apagado";
         volumen = 5;
         posicion = 1;
         conectar = false;
         audio = "Speaker";
-        contactos = new ArrayList<contacto>();
-        contactos.add(new contacto("Sharis", "12345678"));
-        contactos.add(new contacto("Luis", "23145678"));
-        contactos.add(new contacto("Pablo", "34567812"));
     }
 
 
+    
+    /** 
+     * @param itson
+     */
     /*
      * Modo estado
      */
 
     public void estado(Boolean itson){
         if(itson == false){
-            mood = "Apagado";
+            mood = "Apagada";
         }
         else if(itson == true){
-            mood = "Encendido";
+            mood = "Encendida";
         }
-        System.out.println("La radio está  " + mood); 
+        System.out.println("La radio está " + mood + "\n"); 
     }
 
+    
+    /** 
+     * @param flag
+     */
     /*
      * Modo volumen
      */
@@ -54,9 +57,14 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         else if(flag == false){
             volumen --;
         }  
-        System.out.println("El nuevo volumen es " + volumen);   
+        System.out.println("El nuevo volumen está en " + volumen);   
     }
 
+    
+    /** 
+     * @param viaje
+     * @return String
+     */
     /*
      * Modo productividad
      */
@@ -65,10 +73,14 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         Random numero = new Random();
         int distancia = numero.nextInt(100)+1; 
         int tiempo = numero.nextInt(10)+1;
-        return "El destino será " + viaje + "el cual se encuentra a una distancia de " + distancia + "KM y  a un tiempo de "+tiempo + "horas";
+        return "El destino será " + viaje + " el cual se encuentra a una distancia de " + distancia + " KM y  a un tiempo de "+tiempo + " horas \n";
     }
 
 
+     
+     /** 
+      * @param estado
+      */
      /*
      * Modo radio
      */
@@ -76,26 +88,40 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     public void cambiar(Boolean estado){
         if(estado == true){
             tipoEmisora = "FM";
+            System.out.println("La emisora de radio está en " +tipoEmisora+  "\n");
         }
         else if(estado == false){
             tipoEmisora = "AM";
+            System.out.println("La emisora de radio está en " +tipoEmisora+  "\n");
         }
     }
 
 
+    
+    /** 
+     * @param flag
+     */
     public void cambiar_e(Boolean flag){
         if(flag == true){
             emisora = emisora + 0.5;
+            System.out.println("La emisora que está escuchando es " +emisora+  "\n");
         }
         else if(flag == false){
             emisora = emisora - 0.5;
+            System.out.println("La emisora que está escuchando es " +emisora+  "\n");
         }          
     }
 
 
+    
+    /** 
+     * @param listaEmisoras
+     * @param emisora
+     */
     public void guardar(ArrayList<Double> listaEmisoras, Double emisora){
         if(listaEmisoras.size() <= 50 ){
             listaEmisoras.add(emisora);
+            System.out.println("La emisora " +emisora+" fue guardada" );
         }
         else {
             System.out.println("Error la lista esta llena");
@@ -103,15 +129,23 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
+    
+    /** 
+     * @param listaEmisoras
+     */
     public void cargar(ArrayList<Double> listaEmisoras){
         System.out.println("Ingrese la emisora que desee");
                 Double emisora_deseada = scan.nextDouble();
                 scan.nextLine();
-                System.out.println("Esta escuchando la emisora" + emisora_deseada + " en la emosira radial" + tipoEmisora);
+                System.out.println("Esta escuchando la emisora " + emisora_deseada + " en la emisora radial " + tipoEmisora);
 
     }
 
 
+    
+    /** 
+     * @param lista
+     */
     /*
      * Modo reproducción
      */
@@ -122,27 +156,46 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
           }
     }
 
+    
+    /** 
+     * @param flag
+     * @param lista
+     */
     public void cambiar_c(Boolean flag,ArrayList<cancion> lista){
         if (flag==true)
         {
             posicion++;
             if(posicion==lista.size()){
-                posicion=0;}   
+                posicion=0;
+                System.out.println("Se seleccionó la canción " + lista.get(posicion).getNombre());
+            }   
         }
         else
         {
             if (posicion==0){
-                posicion=lista.size()-1;}
+                posicion=lista.size()-1;
+                System.out.println("Se seleccionó la canción " + lista.get(posicion).getNombre());
+            }
             else{
-                posicion--;}
+                posicion--;
+                System.out.println("Se seleccionó la canción " + lista.get(posicion).getNombre());
+            }
         }
 
     }
 
+    
+    /** 
+     * @param lista
+     */
     public void escuchar(ArrayList<cancion> lista){
         System.out.println("Reproduciendo "+lista.get(posicion).mostrar());
     }
 
+    
+    /** 
+     * @param conexion
+     */
     /*
      * Modo telefono
      */
@@ -163,25 +216,34 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
+    
+    /** 
+     * @param contactos
+     */
     public void contactos(ArrayList<contacto> contactos){
         int orden =1;
         for (contacto i: contactos) {
-            System.out.println("-"+orden+". "+i.toString());
+            System.out.println(orden+". "+i.toString());
+            orden++;
           }
 
     }
 
 
+    
+    /** 
+     * @param contactos
+     */
     public void llamar(ArrayList<contacto> contactos){
-        int posicion =1;
+        int posicion = 1;
         for (contacto i: contactos) {
-            System.out.println("-"+posicion+". "+i.toString());
+            System.out.println(posicion+". "+i.toString());
             posicion++;
         }
         System.out.println("Escoja un contacto a llamar");
         int op = scan.nextInt()-1;
         scan.nextLine();
-        System.out.println("llamando a "+contactos.get(op).getNombre()+ " del numero "+ contactos.get(op).getNumero());
+        System.out.println("Llamando a "+contactos.get(op).getNombre()+ " al numero "+ contactos.get(op).getNumero());
 
     }
     
@@ -190,6 +252,10 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
     }
 
 
+    
+    /** 
+     * @param flag
+     */
     public void audio(Boolean flag){
         if (flag == true)
         {

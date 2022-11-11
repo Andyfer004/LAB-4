@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class prueba {
     ArrayList<cancion> playlist1 = new ArrayList<cancion>();
     ArrayList<cancion> playlist2 = new ArrayList<cancion>();
