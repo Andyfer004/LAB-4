@@ -267,5 +267,11 @@ public class radio implements modo_radio, modo_estado, modo_productividad, modo_
         }
         System.out.println("El sonido está en modo "+audio);  
     }
+    public boolean get_conectar(){
+        return true;
+    }
+    public String get_estado(){
+        return "encendido";
+    }
 
 }
