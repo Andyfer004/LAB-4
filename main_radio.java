@@ -68,12 +68,12 @@ public class main_radio {
                 { 
                     tumba_la_casa.estado(true);
                 }
-                /*if(tumba_la_casa.get_estado()=="Apagado")
+                if(tumba_la_casa.get_estado()=="Apagado")
                 {
                     System.out.println("No se puede hacer nada si el radio está apagado");
                     System.out.println("Radio tumba la casa \n[1] Encender \n[2] Cambiar volumen \n[3] Modo radio\n[4] Modo reproducción\n[5] Modo telefono\n[6] Modo productividad\n[7] Apagar");
                     opcion1 = reclado.nextInt();
-                }*/
+                }
                 else
                 {
                     v=0;
@@ -176,7 +176,7 @@ public class main_radio {
                                 tumba_la_casa.contactos(contactos);
                                 break;
                             case 3:
-                                /*if(tumba_la_casa.get_conectar())
+                                if(tumba_la_casa.get_conectar())
                                 {
                                     tumba_la_casa.llamar(contactos);
                                     System.out.println("Cambiar a auriculares o speaker-----------");
@@ -194,7 +194,7 @@ public class main_radio {
                                 else
                                 {
                                     System.out.println("No se puede porque no está conectado el telefono");
-                                }*/
+                                }
                                 break;
                             default:
                                 System.out.println("Opcion ingresada erroneamente");
